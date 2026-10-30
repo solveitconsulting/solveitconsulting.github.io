@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solve IT Consulting | Consultoria TOTVS Protheus</title>
+<meta name="description" content="Revitalização e sustentação de TOTVS Protheus para RH e Backoffice. Diagnóstico gratuito e remoto, atendimento em qualquer lugar onde houver Protheus.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233F;
+    --ink-soft:#3A4760;
+    --muted:#5B6676;
+    --paper:#F4F6F7;
+    --card:#FFFFFF;
+    --line:#D7DDE2;
+    --teal:#1F74BC;
+    --teal-dark:#185C96;
+    --punch:#B7791F;
+    --stub:#FBFAF5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:400 1.0625rem/1.6 "Public Sans",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal)}
+  a:focus-visible,.btn:focus-visible{outline:3px solid var(--punch);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{border-bottom:1px solid var(--line);background:var(--card)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+  .brand img{display:block;height:44px;width:auto}
+  .brand small{font:500 .82rem/1.2 "Public Sans",sans-serif;color:var(--muted);padding-left:14px;border-left:1px solid var(--line)}
+  nav{white-space:nowrap}
+  nav a{color:var(--ink-soft);text-decoration:none;font-weight:500;margin-left:20px}
+  @media (max-width:1180px){.brand small{display:none}}
+  nav a:hover{color:var(--teal)}
+
+  /* Hero */
+  .hero{padding:72px 0 80px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  h1{
+    font:800 clamp(2.3rem,5vw,3.6rem)/1.05 "Archivo",sans-serif;font-stretch:80%;
+    letter-spacing:-.015em;margin:0 0 22px;max-width:16ch
+  }
+  .lede{font-size:1.2rem;color:var(--ink-soft);max-width:52ch;margin:0 0 32px}
+  .ctas{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:10px;
+    font:600 1rem/1 "Public Sans",sans-serif;text-decoration:none;border:2px solid var(--teal)
+  }
+  .btn-primary{background:var(--teal);color:#fff}
+  .btn-primary:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
+  .btn-ghost{color:var(--teal);background:transparent}
+  .btn-ghost:hover{background:#E3EEF8}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* Timecard */
+  .card{
+    background:var(--stub);border:1px solid #CFC9B6;border-radius:6px;
+    box-shadow:0 1px 0 #E6E1D1, 0 18px 40px -24px rgba(22,35,63,.45);
+    font-family:"JetBrains Mono",ui-monospace,monospace;color:#2B2A26;
+    position:relative;overflow:hidden
+  }
+  .card::before{ /* furo do relógio de ponto */
+    content:"";position:absolute;top:14px;left:50%;width:46px;height:9px;margin-left:-23px;
+    border-radius:9px;background:var(--paper);box-shadow:inset 0 1px 2px rgba(0,0,0,.18)
+  }
+  .card-head{padding:38px 22px 14px;border-bottom:1px dashed #BDB59C}
+  .card-head b{display:block;font:700 1.05rem/1.2 "Archivo",sans-serif;font-stretch:85%;color:var(--ink)}
+  .card-head span{font-size:.8rem;color:#6B6553}
+  .card table{width:100%;border-collapse:collapse;font-size:.86rem}
+  .card td{padding:11px 22px;border-bottom:1px solid #E7E1CF;vertical-align:top}
+  .card td:first-child{width:72px;color:var(--punch);font-weight:600;white-space:nowrap}
+  .card tr.total td{border-bottom:0;background:#F1EEE2;font-weight:600;color:var(--ink)}
+  .card tr.total td:first-child{color:var(--teal)}
+  @media (prefers-reduced-motion:no-preference){
+    .card tbody tr{opacity:0;transform:translateY(-4px);animation:stamp .35s ease-out forwards}
+    .card tbody tr:nth-child(1){animation-delay:.25s}
+    .card tbody tr:nth-child(2){animation-delay:.55s}
+    .card tbody tr:nth-child(3){animation-delay:.85s}
+    .card tbody tr:nth-child(4){animation-delay:1.15s}
+    .card tbody tr:nth-child(5){animation-delay:1.55s}
+    @keyframes stamp{to{opacity:1;transform:none}}
+  }
+
+  /* Sections */
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  h2{font:800 clamp(1.8rem,3.2vw,2.4rem)/1.1 "Archivo",sans-serif;font-stretch:82%;margin:0 0 14px;letter-spacing:-.01em}
+  .intro{color:var(--ink-soft);max-width:60ch;margin:0 0 44px}
+
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+  .service{padding:26px 24px 30px 0;border-bottom:1px solid var(--line)}
+  .service + .service{padding-left:24px;border-left:1px solid var(--line)}
+  .service:nth-child(3n+1){padding-left:0;border-left:0}
+  .service h3{font:700 1.2rem/1.25 "Archivo",sans-serif;font-stretch:88%;margin:0 0 8px}
+  .service p{margin:0;color:var(--muted);font-size:.98rem}
+  .service .mod{display:inline-block;margin-top:12px;font:600 .78rem/1 "JetBrains Mono",monospace;color:var(--teal);background:#E3EEF8;padding:5px 8px;border-radius:5px}
+
+  .also{margin:28px 0 0;color:var(--ink-soft);max-width:80ch}
+  .also strong{color:var(--ink)}
+
+  .slogan{margin:0 0 14px;font:600 .95rem/1 "Public Sans",sans-serif;color:var(--teal)}
+  .areas{display:grid;grid-template-columns:1.4fr 1fr;gap:0;border-top:2px solid var(--ink)}
+  .area{padding:26px 28px 8px 0}
+  .area + .area{padding-left:28px;border-left:1px solid var(--line)}
+  .area h3{font:700 1.25rem/1.25 "Archivo",sans-serif;font-stretch:88%;margin:0 0 12px}
+  .area ul{margin:0;padding:0;list-style:none;columns:2;column-gap:28px}
+  .area + .area ul{columns:1}
+  .area li{padding:7px 0;border-bottom:1px solid var(--line);break-inside:avoid;color:var(--ink-soft)}
+  .clients{background:var(--card)}
+  .client-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+  .client-list li{padding:14px 20px;border:1px solid var(--line);border-radius:8px;font:700 1.05rem/1.2 "Archivo",sans-serif;font-stretch:88%;color:var(--ink-soft);background:var(--paper)}
+
+  .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .about p{margin:0 0 16px;color:var(--ink-soft);max-width:62ch}
+  .facts{list-style:none;margin:0;padding:0;border-left:3px solid var(--teal)}
+  .facts li{padding:10px 0 10px 20px}
+  .facts strong{display:block;font:700 1.05rem/1.3 "Archivo",sans-serif;font-stretch:88%}
+  .facts span{color:var(--muted);font-size:.95rem}
+
+  .contact{background:var(--ink);color:#fff;border-top:0}
+  .contact h2{color:#fff}
+  .contact .intro{color:#C6CEDB}
+  .contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:20px}
+  .contact a.tile{
+    display:block;padding:22px 24px;border:1px solid #33456A;border-radius:12px;
+    color:#fff;text-decoration:none;background:#1C2C4F
+  }
+  .contact a.tile:hover{border-color:#5AA9E6;background:#203458}
+  .tile small{display:block;color:#9FB0C9;font-size:.85rem;margin-bottom:4px}
+  .tile b{font:700 1.15rem/1.3 "Archivo",sans-serif;font-stretch:90%;word-break:break-word}
+
+  footer{background:#111C33;color:#8E9BB3;font-size:.86rem;padding:28px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+  @media (max-width:900px){
+    .hero{padding:48px 0 56px}
+    .hero-grid,.about{grid-template-columns:1fr;gap:40px}
+    .services{grid-template-columns:1fr 1fr}
+    .service,.service + .service{padding:24px 18px 26px 0;border-left:0}
+    .service:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+    nav{display:none}
+    .areas{grid-template-columns:1fr}
+    .area + .area{padding-left:0;border-left:0}
+    .brand small{display:none}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .brand img{height:36px}
+    .services{grid-template-columns:1fr}
+    .service,.service + .service,.service:nth-child(even){padding:22px 0;border-left:0}
+    .contact-grid{grid-template-columns:1fr}
+    .area ul{columns:1}
+    section{padding:60px 0}
+    .card td{padding:10px 16px}
+  }
+
+  /* v3 */
+  .signs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 26px 18px;box-shadow:0 18px 40px -28px rgba(22,35,63,.5)}
+  .signs h2{font-size:1.25rem;margin:0 0 6px}
+  .signs p{margin:0 0 14px;color:var(--muted);font-size:.95rem}
+  .signs ul{list-style:none;margin:0;padding:0}
+  .signs li{position:relative;padding:10px 0 10px 30px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.98rem}
+  .signs li::before{content:"";position:absolute;left:2px;top:15px;width:14px;height:14px;border:2px solid var(--punch);border-radius:3px}
+  .signs .after{margin:12px 0 0;padding-top:12px;border-top:2px solid var(--ink);color:var(--ink);font-weight:600;font-size:.98rem}
+  .fronts{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .front{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:28px}
+  .front.alt{border-top-color:var(--punch)}
+  .front h3{font:800 1.6rem/1.1 "Archivo",sans-serif;font-stretch:82%;margin:0 0 6px}
+  .front .for{margin:0 0 16px;color:var(--muted)}
+  .front ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+  .front li{margin:6px 0}
+  .sub{font:700 1.2rem/1.2 "Archivo",sans-serif;font-stretch:88%;margin:48px 0 14px}
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:st;border-top:2px solid var(--ink)}
+  .steps li{counter-increment:st;padding:24px 22px 8px 0}
+  .steps li + li{padding-left:22px;border-left:1px solid var(--line)}
+  .steps li::before{content:counter(st);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font:700 1rem/1 "Archivo",sans-serif;margin-bottom:12px}
+  .steps h3{font:700 1.15rem/1.25 "Archivo",sans-serif;font-stretch:88%;margin:0 0 6px}
+  .steps p{margin:0;color:var(--muted);font-size:.96rem}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column}
+  .plan.feat{border:2px solid var(--teal)}
+  .plan .tag{align-self:flex-start;font:600 .78rem/1 "Public Sans",sans-serif;color:#fff;background:var(--teal);padding:6px 9px;border-radius:5px;margin-bottom:12px}
+  .plan h3{font:800 1.4rem/1.15 "Archivo",sans-serif;font-stretch:84%;margin:0 0 4px}
+  .plan .how{margin:0 0 14px;color:var(--teal);font-weight:600}
+  .plan ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+  .plan li{margin:6px 0}
+  .note{margin:22px 0 0;color:var(--ink-soft);max-width:80ch}
+  .faq{max-width:820px}
+  .faq details{border-top:1px solid var(--line);padding:4px 0}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;position:relative;font:700 1.1rem/1.3 "Archivo",sans-serif;font-stretch:90%}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:6px;top:12px;font:400 1.6rem/1 "Public Sans",sans-serif;color:var(--teal)}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin:0 0 16px;color:var(--ink-soft);max-width:70ch}
+  .about .card{margin:0}
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:999px;background:#1F9D55;color:#fff;text-decoration:none;font:600 .98rem/1 "Public Sans",sans-serif;box-shadow:0 10px 24px -8px rgba(0,0,0,.45)}
+  .wa-float:hover{background:#178345}
+  .wa-float svg{width:22px;height:22px}
+  .wa-float:focus-visible{outline:3px solid var(--punch);outline-offset:3px}
+  footer .indep{display:block;margin-top:4px;color:#B4C0D4}
+  @media (max-width:900px){
+    .fronts,.plans{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .steps li,.steps li + li{padding:22px 18px 10px 0;border-left:0}
+    .steps li:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+  }
+  @media (max-width:600px){
+    .steps{grid-template-columns:1fr}
+    .steps li:nth-child(even){padding-left:0;border-left:0}
+    .wa-float span{display:none}
+    .wa-float{padding:14px}
+  }
+  .proof{background:var(--ink);color:#fff;border-top:0}
+  .proof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .proof h2{color:#fff;font-size:clamp(2rem,4vw,3rem);margin:0;border-left:6px solid var(--punch);padding-left:22px}
+  .proof p{color:#D3DAE6;font-size:1.12rem;margin:0 0 16px;max-width:58ch}
+  @media (max-width:900px){.proof-grid{grid-template-columns:1fr;gap:24px}}
+  .esocial{background:var(--card)}
+  .es-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+  .es-grid .intro{margin-bottom:0}
+  .es-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--ink)}
+  .es-list li{padding:18px 18px 18px 0;border-bottom:1px solid var(--line)}
+  .es-list li:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+  .es-list strong{display:block;font:700 1.05rem/1.3 "Archivo",sans-serif;font-stretch:88%;margin-bottom:4px}
+  .es-list span{color:var(--muted);font-size:.95rem}
+  @media (max-width:900px){.es-grid{grid-template-columns:1fr;gap:24px}}
+  @media (max-width:600px){.es-list{grid-template-columns:1fr}.es-list li:nth-child(even){padding-left:0;border-left:0}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#">
+      <img src="logo.png" alt="Solve IT Consulting" width="480" height="119">
+      <small>Consultoria TOTVS Protheus</small>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#solucoes">Soluções</a>
+      <a href="#esocial">eSocial</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#contratacao">Contratação</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="slogan">Solucionando seus problemas</p>
+        <h1>Seu Protheus pode trabalhar muito mais por você.</h1>
+        <p class="lede">Colocamos em ordem o Protheus que está subutilizado ou com falhas e cuidamos dele no dia a dia, com consultores especialistas e desenvolvedores especializados nos módulos de RH, formados dentro da TOTVS.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="https://wa.me/5511993870553?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Solve%20IT%20e%20gostaria%20de%20agendar%20o%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>Solicitar diagnóstico gratuito</a>
+          <a class="btn btn-ghost" href="#como-funciona">Ver como funciona</a>
+        </div>
+      </div>
+
+      <aside class="signs" aria-labelledby="sinais">
+        <h2 id="sinais">Algum destes soa familiar?</h2>
+        <p>Situações que resolvemos com frequência:</p>
+        <ul>
+          <li>A folha fecha com diferenças que alguém corrige à mão.</li>
+          <li>O eSocial e o TAF voltam com rejeições sem explicação clara.</li>
+          <li>O fechamento do ponto leva dias e depende de planilhas.</li>
+          <li>Rotinas customizadas ficaram lentas ou ninguém sabe mantê-las.</li>
+          <li>Módulos foram comprados, mas nunca foram usados de verdade.</li>
+          <li>A atualização de release está travada há meses.</li>
+        </ul>
+        <p class="after">O primeiro passo é um diagnóstico gratuito e remoto.</p>
+      </aside>
+    </div>
+  </div>
+
+  <section id="solucoes">
+    <div class="wrap">
+      <h2>Duas frentes para o seu Protheus</h2>
+      <p class="intro">Primeiro colocamos o sistema em ordem. Depois mantemos ele assim.</p>
+      <div class="fronts">
+        <div class="front">
+          <h3>Revitalização</h3>
+          <p class="for">Para o Protheus subutilizado ou com falhas.</p>
+          <ul>
+            <li>Revisão de parametrização, verbas, fórmulas e incidências</li>
+            <li>Correção de inconsistências no eSocial, TAF e ponto</li>
+            <li>Ativação de recursos e módulos que já foram pagos e não são usados</li>
+            <li>Revisão e otimização de customizações ADVPL</li>
+            <li>Treinamento dos usuários nos processos ajustados</li>
+          </ul>
+        </div>
+        <div class="front alt">
+          <h3>Sustentação</h3>
+          <p class="for">Para manter o sistema estável mês a mês.</p>
+          <ul>
+            <li>Agendas periódicas e recorrentes com a sua equipe</li>
+            <li>Suporte por chamados (tickets) com acompanhamento</li>
+            <li>Apoio nos fechamentos mensais e anuais</li>
+            <li>Adequação às mudanças de legislação</li>
+            <li>Atualizações de release e de versão</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub">Também atuamos com</h3>
+      <div class="services">
+        <div class="service">
+          <h3>Personalização</h3>
+          <p>O sistema com a cara da sua empresa: telas, relatórios, documentos e planilhas no layout, na identidade visual e no jeito de trabalhar de cada cliente.</p>
+          <span class="mod">Relatórios · Planilhas · Telas</span>
+        </div>
+        <div class="service">
+          <h3>Desenvolvimento ADVPL</h3>
+          <p>Customizações, consultas SQL, integrações com outros sistemas e otimização de rotinas lentas.</p>
+          <span class="mod">ADVPL / TL++</span>
+        </div>
+        <div class="service">
+          <h3>Implantação e migração</h3>
+          <p>Implantação, reimplantação e atualização de release ou versão, com revisão das customizações e validação dos processos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="esocial" class="esocial">
+    <div class="wrap es-grid">
+      <div>
+        <h2>eSocial e TAF em dia, sem rejeições recorrentes</h2>
+        <p class="intro">O eSocial expõe qualquer falha de cadastro ou de cálculo da folha. Atuamos na origem do problema, no Protheus, para que os eventos saiam certos e as obrigações fechem sem retrabalho.</p>
+      </div>
+      <ul class="es-list">
+        <li><strong>Rejeições e pendências</strong><span>Análise dos retornos, correção da causa e reenvio dos eventos</span></li>
+        <li><strong>Eventos de tabela, periódicos e não periódicos</strong><span>Cadastros, rubricas e incidências configurados corretamente</span></li>
+        <li><strong>Conciliação</strong><span>Folha x eSocial x DCTFWeb e FGTS Digital, com rastreabilidade dos valores</span></li>
+        <li><strong>Retificações e reprocessamentos</strong><span>Ajustes de competências anteriores sem perder o controle</span></li>
+        <li><strong>SST</strong><span>Eventos de Saúde e Segurança do Trabalho integrados ao módulo de Medicina e Segurança</span></li>
+        <li><strong>TAF</strong><span>Configuração, monitoramento e integração com o RH do Protheus</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="proof" aria-labelledby="dificeis">
+    <div class="wrap proof-grid">
+      <h2 id="dificeis">Chamados quando os outros já desistiram.</h2>
+      <div>
+        <p>Boa parte dos nossos projetos começa assim: uma customização que se arrasta há anos sem solução definitiva, ou um problema que outras equipes consideraram impossível de resolver.</p>
+        <p>Por conhecer tanto a regra de negócio do RH quanto o código ADVPL por trás dela, conseguimos ir até a causa real, em vez de aplicar mais um paliativo.</p>
+        <p>E quando o limite é o próprio sistema, não paramos nele. Combinamos o Protheus com outras ferramentas, como planilhas automatizadas, VBA, SQL e integrações, até chegar ao resultado que o cliente precisa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <h2>Como funciona</h2>
+      <p class="intro">Um caminho simples, do primeiro contato ao acompanhamento contínuo.</p>
+      <ol class="steps">
+        <li><h3>Diagnóstico gratuito</h3><p>Sessão remota com o usuário e/ou a TI para entender o cenário e identificar os pontos críticos.</p></li>
+        <li><h3>Escopo e proposta</h3><p>Apresentamos o que precisa ser feito, as prioridades e o modelo de contratação mais adequado.</p></li>
+        <li><h3>Execução</h3><p>Trabalho remoto ou presencial, no ambiente do cliente, com consultores especialistas e desenvolvedores.</p></li>
+        <li><h3>Acompanhamento</h3><p>Validação com os usuários e, se fizer sentido, continuidade em sustentação.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contratacao">
+    <div class="wrap">
+      <h2>Modelos de contratação</h2>
+      <p class="intro">Escolha o formato que combina com a sua demanda.</p>
+      <div class="plans">
+        <div class="plan feat">
+          <span class="tag">Mais completo</span>
+          <h3>Sustentação</h3>
+          <p class="how">Mensalidade com renovação anual</p>
+          <ul>
+            <li>Atendimento por chamados (tickets)</li>
+            <li>Agendas periódicas e recorrentes</li>
+            <li>Acompanhamento contínuo do ambiente</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Banco de Horas</h3>
+          <p class="how">Valor diferenciado</p>
+          <ul>
+            <li>Consumo conforme a demanda</li>
+            <li>Desconto progressivo pela quantidade contratada</li>
+            <li>Ideal para projetos e demandas variáveis</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>Horas Avulsas</h3>
+          <p class="how">Sob demanda</p>
+          <ul>
+            <li>Para necessidades pontuais</li>
+            <li>Sem compromisso de volume</li>
+            <li>Valor de hora cheia</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note"><strong>Alocação presencial</strong> também está disponível. Nesse caso, as despesas de deslocamento, alimentação e hospedagem (quando a ida e volta no mesmo dia não for viável) ficam por conta do cliente.</p>
+    </div>
+  </section>
+
+  <section id="areas">
+    <div class="wrap">
+      <h2>Áreas e módulos</h2>
+      <p class="intro">Nossa especialidade é o RH do Protheus, e também atendemos os principais módulos de Backoffice.</p>
+      <div class="areas">
+        <div class="area">
+          <h3>Recursos Humanos</h3>
+          <ul>
+            <li>Gestão de Pessoal (Folha de Pagamento)</li>
+            <li>Ponto Eletrônico</li>
+            <li>eSocial e TAF</li>
+            <li>Cargos e Salários</li>
+            <li>Recrutamento e Seleção</li>
+            <li>Treinamento</li>
+            <li>Medicina e Segurança do Trabalho</li>
+            <li>Avaliação e Pesquisa de Desempenho</li>
+            <li>Arquitetura Organizacional</li>
+            <li>Portal RH / Meu RH</li>
+            <li>Acompanhamento de Processos Trabalhistas</li>
+          </ul>
+        </div>
+        <div class="area">
+          <h3>Backoffice</h3>
+          <ul>
+            <li>Contabilidade Gerencial</li>
+            <li>Financeiro</li>
+            <li>Fiscal</li>
+            <li>Faturamento</li>
+            <li>Compras</li>
+            <li>Estoque e Custos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="clientes" class="clients">
+    <div class="wrap">
+      <h2>Empresas que já atendemos</h2>
+      <p class="intro">Projetos de implantação, reimplantação, suporte, desenvolvimento e atualização de versão.</p>
+      <ul class="client-list">
+        <li>Multilaser</li><li>Multirede</li><li>CNA Inglês Definitivo</li><li>Pacer Logística</li><li>T4F – Time for Fun</li><li>Grupasso</li><li>Cony Services</li><li>Adar</li><li>Verzani &amp; Sandrini</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="empresa">
+    <div class="wrap about">
+      <div>
+        <h2>A Solve IT</h2>
+        <p>A Solve IT Consulting nasceu da união de profissionais que trabalharam nas equipes internas de implantação e desenvolvimento da TOTVS. A proposta é oferecer atendimento especializado com um custo-benefício melhor que o de grandes consultorias.</p>
+        <p>Nossa equipe é formada por consultores especialistas e desenvolvedores especializados nos módulos de RH, que atuam com o Protheus desde a década de 1990, com experiência inclusive em projetos no mercado internacional.</p>
+        <p>Para projetos maiores, contamos com uma rede de consultorias parceiras, todas com profissionais formados nos produtos TOTVS.</p>
+      </div>
+      <figure class="card" aria-label="Linha do tempo da Solve IT">
+        <div class="card-head">
+          <b>Linha do tempo da Solve IT</b>
+          <span>Consultoria TOTVS Protheus · São Paulo, SP</span>
+        </div>
+        <table>
+          <tbody>
+            <tr><td>1999</td><td>Equipe atuando no Protheus dentro da Microsiga, hoje TOTVS</td></tr>
+            <tr><td>2013</td><td>Início da consultoria independente em Protheus</td></tr>
+            <tr><td>2017</td><td>Fundação da Solve IT Consulting</td></tr>
+            <tr><td>Hoje</td><td>Revitalização e sustentação de RH e Backoffice</td></tr>
+            <tr class="total"><td>Saldo</td><td>Mais de 25 anos de Protheus na equipe</td></tr>
+          </tbody>
+        </table>
+      </figure>
+    </div>
+  </section>
+
+  <section id="duvidas">
+    <div class="wrap">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq">
+        <details><summary>Como funciona o diagnóstico gratuito?</summary><p>É uma sessão remota, acompanhada pelo usuário e/ou pela equipe de TI, para entendermos o cenário do seu Protheus e apontarmos os pontos críticos. Não há compromisso de contratação.</p></details>
+        <details><summary>Vocês atendem fora de São Paulo?</summary><p>Sim. O atendimento remoto alcança qualquer lugar onde houver Protheus, no Brasil ou no exterior. Nossa equipe tem experiência no mercado internacional.</p></details>
+        <details><summary>Também fazem atendimento presencial?</summary><p>Sim. As despesas de deslocamento, alimentação e hospedagem (quando a ida e volta no mesmo dia não for viável) ficam por conta do cliente.</p></details>
+        <details><summary>Vocês trabalham no ambiente do cliente?</summary><p>Sim. Atuamos diretamente no ambiente Protheus da sua empresa, com consultores especialistas e desenvolvedores especializados nos módulos de RH.</p></details>
+        <details><summary>Qual a diferença entre Sustentação e Banco de Horas?</summary><p>Na Sustentação, você paga uma mensalidade com renovação anual e conta com atendimento por chamados e agendas periódicas. No Banco de Horas, você adquire um pacote com valor diferenciado e consome conforme a demanda, com desconto progressivo pela quantidade.</p></details>
+        <details><summary>Vocês são uma empresa da TOTVS?</summary><p>Não. A Solve IT é uma consultoria independente, sem vínculo com a TOTVS. Nossa equipe tem formação e experiência nos produtos TOTVS.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="wrap">
+      <h2>Agende seu diagnóstico gratuito</h2>
+      <p class="intro">Conte qual é o desafio no seu Protheus. Retornamos para agendar a sessão remota.</p>
+      <div class="contact-grid">
+        <a class="tile" href="https://wa.me/5511993870553?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Solve%20IT%20e%20gostaria%20de%20agendar%20o%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener">
+          <small>WhatsApp</small><b>(11) 99387-0553</b>
+        </a>
+        <a class="tile" href="mailto:contato@solveitconsulting.com.br?subject=Diagn%C3%B3stico%20gratuito">
+          <small>E-mail</small><b>contato@solveitconsulting.com.br</b>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Solve IT Consulting · São Paulo, SP</span>
+    <span>Empresa independente, sem vínculo com a TOTVS S.A.<span class="indep">Protheus e ADVPL são marcas da TOTVS S.A.</span></span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5511993870553?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Solve%20IT%20e%20gostaria%20de%20agendar%20o%20diagn%C3%B3stico%20gratuito." target="_blank" rel="noopener" aria-label="Falar com a Solve IT pelo WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg><span>Fale conosco</span></a>
+
+</body>
+</html>
