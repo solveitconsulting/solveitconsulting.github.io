@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://solveitconsulting.com.br/sitemap.xml
